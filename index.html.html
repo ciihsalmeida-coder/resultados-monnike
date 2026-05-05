@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Resultados — Monnike Garcia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #2F456F;
+    --terracota: #C97868;
+    --bege: #F1ECE6;
+    --oliva: #9DA18E;
+    --grafite: #434A5D;
+    --bege-dark: #E5DDD4;
+    --navy-light: #3d5688;
+    --white: #FDFAF7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bege);
+    color: var(--grafite);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--bege);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .header-period {
+    font-size: 0.78rem;
+    color: var(--oliva);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    min-height: 94vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,120,104,0.12) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(157,161,142,0.1) 0%, transparent 70%);
+    bottom: 80px;
+    left: 60px;
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,120,104,0.15);
+    border: 1px solid rgba(201,120,104,0.3);
+    color: var(--terracota);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--terracota);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1.12;
+    margin-bottom: 24px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--terracota);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: rgba(241,236,230,0.7);
+    line-height: 1.65;
+    max-width: 420px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--terracota);
+    margin-bottom: 48px;
+  }
+
+  .hero-client {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracota), #a85f50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .hero-client-info small {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--oliva);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .hero-client-info strong {
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  /* Hero Right — KPIs */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px 80px 40px;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .kpi-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    animation: fadeUp 0.8s ease both;
+  }
+  .kpi-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.07);
+  }
+  .kpi-card.accent {
+    background: linear-gradient(135deg, rgba(201,120,104,0.2), rgba(201,120,104,0.08));
+    border-color: rgba(201,120,104,0.25);
+  }
+  .kpi-card.accent-oliva {
+    background: linear-gradient(135deg, rgba(157,161,142,0.15), rgba(157,161,142,0.05));
+    border-color: rgba(157,161,142,0.2);
+  }
+  .kpi-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(241,236,230,0.5);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .kpi-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .kpi-number.terracota { color: var(--terracota); }
+  .kpi-number.oliva { color: var(--oliva); }
+
+  .kpi-desc {
+    font-size: 0.78rem;
+    color: rgba(241,236,230,0.5);
+    line-height: 1.4;
+  }
+
+  .kpi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+  .kpi-badge.green {
+    background: rgba(34,197,94,0.15);
+    color: #4ade80;
+  }
+  .kpi-badge.orange {
+    background: rgba(201,120,104,0.2);
+    color: var(--terracota);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .kpi-card:nth-child(1) { animation-delay: 0.1s; }
+  .kpi-card:nth-child(2) { animation-delay: 0.2s; }
+  .kpi-card:nth-child(3) { animation-delay: 0.3s; }
+  .kpi-card:nth-child(4) { animation-delay: 0.4s; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 88px 80px;
+  }
+  .section-alt {
+    background: var(--white);
+  }
+
+  .section-header {
+    margin-bottom: 56px;
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy);
+    font-weight: 600;
+    line-height: 1.18;
+    margin-bottom: 16px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--terracota);
+  }
+  .section-sub {
+    font-size: 0.97rem;
+    color: var(--grafite);
+    opacity: 0.75;
+    max-width: 540px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── OVERVIEW CARDS ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .overview-card {
+    background: var(--bege);
+    border-radius: 16px;
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .section-alt .overview-card {
+    background: var(--bege);
+  }
+  .overview-card:hover { transform: translateY(-5px); }
+  .overview-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--terracota);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .overview-card:hover::after { transform: scaleX(1); }
+
+  .ov-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  .ov-icon.navy { background: rgba(47,69,111,0.1); color: var(--navy); }
+  .ov-icon.terra { background: rgba(201,120,104,0.15); color: var(--terracota); }
+  .ov-icon.oliva { background: rgba(157,161,142,0.2); color: var(--oliva); }
+
+  .ov-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .ov-label {
+    font-size: 0.8rem;
+    color: var(--grafite);
+    opacity: 0.65;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .ov-insight {
+    font-size: 0.8rem;
+    color: var(--grafite);
+    line-height: 1.55;
+    padding-top: 12px;
+    border-top: 1px solid rgba(67,74,93,0.1);
+    opacity: 0.8;
+  }
+
+  /* ── INSIGHT BANNER ── */
+  .insight-banner {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 48px 56px;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+  .insight-banner p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    line-height: 1.5;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .insight-banner p em { color: var(--terracota); font-style: normal; font-weight: 600; }
+  .insight-stat {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .insight-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+  }
+  .insight-stat-label {
+    font-size: 0.75rem;
+    color: rgba(241,236,230,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+
+  /* ── DISCOVERY SECTION ── */
+  .discovery-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .disc-visual {
+    position: relative;
+    height: 340px;
+  }
+  .donut-wrap {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+  .donut-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .donut-center-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .donut-center-label {
+    font-size: 0.7rem;
+    color: var(--grafite);
+    opacity: 0.6;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--grafite);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-bold { font-weight: 600; }
+
+  .disc-content { }
+  .disc-highlight {
+    background: linear-gradient(135deg, var(--navy), #3d5688);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    color: white;
+  }
+  .disc-highlight-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .disc-highlight-label {
+    font-size: 0.85rem;
+    color: rgba(241,236,230,0.7);
+    margin-bottom: 16px;
+  }
+  .disc-highlight-text {
+    font-size: 0.9rem;
+    color: rgba(241,236,230,0.85);
+    line-height: 1.6;
+  }
+
+  .funnel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .funnel-tag {
+    background: rgba(47,69,111,0.08);
+    border: 1px solid rgba(47,69,111,0.15);
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── ENGAGEMENT ── */
+  .engagement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .eng-bars { }
+  .eng-bar-item {
+    margin-bottom: 24px;
+  }
+  .eng-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .eng-bar-label { font-size: 0.85rem; font-weight: 500; color: var(--grafite); }
+  .eng-bar-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .eng-bar-track {
+    height: 8px;
+    background: rgba(67,74,93,0.1);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .eng-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1s ease;
+  }
+
+  .eng-insight-card {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 36px;
+    color: white;
+    height: 100%;
+  }
+  .eng-insight-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .eng-insight-body {
+    font-size: 0.88rem;
+    color: rgba(241,236,230,0.72);
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+  .eng-insight-pill {
+    display: inline-block;
+    background: rgba(201,120,104,0.2);
+    border: 1px solid rgba(201,120,104,0.3);
+    color: var(--terracota);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── BEHAVIOR / STORIES ── */
+  .behavior-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+  }
+  .stories-card {
+    background: linear-gradient(145deg, #1e3356, var(--navy));
+    border-radius: 20px;
+    padding: 48px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .stories-card::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,120,104,0.15) 0%, transparent 70%);
+    top: -80px;
+    right: -80px;
+  }
+  .stories-perc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: var(--terracota);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stories-label {
+    font-size: 0.85rem;
+    color: rgba(241,236,230,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .stories-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .stories-body {
+    font-size: 0.88rem;
+    color: rgba(241,236,230,0.7);
+    line-height: 1.65;
+  }
+  .behavior-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .aside-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    border-left: 3px solid var(--terracota);
+    flex: 1;
+  }
+  .aside-card.oliva-border { border-color: var(--oliva); }
+  .aside-card-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--terracota);
+    margin-bottom: 8px;
+  }
+  .aside-card.oliva-border .aside-card-title { color: var(--oliva); }
+  .aside-card-body {
+    font-size: 0.87rem;
+    color: var(--grafite);
+    line-height: 1.55;
+  }
+
+  /* ── FOLLOWERS ── */
+  .followers-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .follower-card {
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .follower-card.gained {
+    background: var(--navy);
+    color: white;
+  }
+  .follower-card.lost {
+    background: var(--bege-dark);
+  }
+  .follower-card.net {
+    background: linear-gradient(135deg, var(--terracota), #a85f50);
+    color: white;
+  }
+  .fol-icon {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    opacity: 0.85;
+  }
+  .fol-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .follower-card.lost .fol-num { color: var(--grafite); }
+  .fol-label {
+    font-size: 0.78rem;
+    opacity: 0.65;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .follower-card.lost .fol-label { color: var(--grafite); }
+  .fol-body {
+    font-size: 0.83rem;
+    opacity: 0.75;
+    line-height: 1.55;
+  }
+  .follower-card.lost .fol-body { color: var(--grafite); }
+
+  /* ── OPPORTUNITIES ── */
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .opp-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(67,74,93,0.06);
+  }
+  .opp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(47,69,111,0.08);
+  }
+  .opp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--terracota);
+    opacity: 0.35;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .opp-content {}
+  .opp-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .opp-desc {
+    font-size: 0.83rem;
+    color: var(--grafite);
+    opacity: 0.7;
+    line-height: 1.55;
+  }
+
+  /* ── NEXT STEPS ── */
+  .nextsteps-section {
+    background: var(--navy);
+    color: white;
+    padding: 88px 80px;
+  }
+  .nextsteps-section .section-title { color: var(--white); }
+  .nextsteps-section .section-sub { color: rgba(241,236,230,0.6); }
+  .nextsteps-section .section-eyebrow { color: var(--oliva); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .step-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: background 0.3s;
+  }
+  .step-card:hover { background: rgba(255,255,255,0.08); }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--terracota);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .step-body {
+    font-size: 0.83rem;
+    color: rgba(241,236,230,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--grafite);
+    padding: 32px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--bege);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .footer-note {
+    font-size: 0.75rem;
+    color: rgba(241,236,230,0.35);
+    letter-spacing: 0.06em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 32px 40px; }
+    .hero-right { padding: 0 32px 60px; }
+    .hero-kpi-row { grid-template-columns: 1fr 1fr; }
+    .section { padding: 60px 32px; }
+    .overview-grid { grid-template-columns: 1fr 1fr; }
+    .discovery-layout { grid-template-columns: 1fr; }
+    .engagement-grid { grid-template-columns: 1fr; }
+    .behavior-grid { grid-template-columns: 1fr; }
+    .followers-layout { grid-template-columns: 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .nextsteps-section { padding: 60px 32px; }
+    .footer { padding: 24px 32px; flex-direction: column; gap: 8px; text-align: center; }
+    .insight-banner { grid-template-columns: 1fr; }
+    .header { padding: 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">Labcomex · Relatório de Resultados</div>
+  <div class="header-period">Instagram · Últimos 30 dias</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Relatório estratégico · Instagram</div>
+    <h1 class="hero-title">Resultados que mostram <em>crescimento real</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Nos últimos 30 dias, o perfil registrou expansão significativa de alcance e visibilidade — com destaque para a chegada a novos públicos e o fortalecimento da presença da marca.</p>
+    <div class="hero-client">
+      <div class="hero-avatar">M</div>
+      <div class="hero-client-info">
+        <small>Preparado para</small>
+        <strong>Monnike Garcia</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-kpi-row">
+      <div class="kpi-card accent">
+        <div class="kpi-label">Contas Alcançadas</div>
+        <div class="kpi-number terracota">+431,6%</div>
+        <div class="kpi-desc">crescimento em relação ao período anterior</div>
+        <div class="kpi-badge green">▲ crescimento</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Impressões Totais</div>
+        <div class="kpi-number">+207,9%</div>
+        <div class="kpi-desc">aumento expressivo de visibilidade da marca</div>
+        <div class="kpi-badge green">▲ alta</div>
+      </div>
+    </div>
+    <div class="hero-kpi-row">
+      <div class="kpi-card accent-oliva">
+        <div class="kpi-label">Visualizações</div>
+        <div class="kpi-number oliva">32.740</div>
+        <div class="kpi-desc">impressões totais no período</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Contas Alcançadas</div>
+        <div class="kpi-number">11.232</div>
+        <div class="kpi-desc">pessoas impactadas pelo conteúdo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISÃO GERAL -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">01 · Visão Geral</div>
+    <h2 class="section-title">Os números que <em>contam a história</em></h2>
+    <p class="section-sub">Um mês de crescimento consistente, com dados que refletem uma estratégia em evolução e um público que está respondendo à presença da marca.</p>
+  </div>
+
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="ov-icon navy">📊</div>
+      <div class="ov-num">7.583</div>
+      <div class="ov-label">Impressões</div>
+      <div class="ov-insight">Cada entrega de conteúdo gerou impacto. O número reflete consistência na publicação e relevância percebida pelo algoritmo.</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-icon terra">👁</div>
+      <div class="ov-num">11.232</div>
+      <div class="ov-label">Contas Alcançadas</div>
+      <div class="ov-insight">A marca chegou a mais de 11 mil pessoas únicas — um resultado expressivo que indica forte expansão de visibilidade.</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-icon oliva">❤️</div>
+      <div class="ov-num">717</div>
+      <div class="ov-label">Interações</div>
+      <div class="ov-insight">O público está reagindo ao conteúdo, o que sinaliza conexão real com o que está sendo entregue.</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-icon navy">▶</div>
+      <div class="ov-num">32.740</div>
+      <div class="ov-label">Visualizações</div>
+      <div class="ov-insight">Um volume robusto de visualizações que demonstra que o conteúdo está sendo consumido de forma ativa.</div>
+    </div>
+  </div>
+
+  <div class="insight-banner">
+    <p>O perfil está em uma <em>fase acelerada de crescimento</em> — os números de alcance mostram que a estratégia está levando a marca para além da sua audiência atual.</p>
+    <div class="insight-stat">
+      <div class="insight-stat-num">+431%</div>
+      <div class="insight-stat-label">Crescimento de Alcance</div>
+    </div>
+  </div>
+</section>
+
+<!-- CRESCIMENTO E DESCOBERTA -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">02 · Crescimento e Descoberta</div>
+    <h2 class="section-title">Novos públicos encontrando <em>sua marca</em></h2>
+    <p class="section-sub">O perfil está saindo da bolha da audiência atual e chegando a pessoas que ainda não te conhecem — o momento mais valioso de qualquer estratégia de awareness.</p>
+  </div>
+
+  <div class="discovery-layout">
+    <div class="disc-visual">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#E5DDD4" stroke-width="12"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#C97868" stroke-width="12"
+            stroke-dasharray="119.38 75.4"
+            stroke-dashoffset="0"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#9DA18E" stroke-width="12"
+            stroke-dasharray="75.4 119.38"
+            stroke-dashoffset="-119.38"/>
+        </svg>
+        <div class="donut-center">
+          <div class="donut-center-num">53%</div>
+          <div class="donut-center-label">não seguidores</div>
+        </div>
+      </div>
+      <div class="donut-legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--terracota)"></div>
+          <span><span class="legend-bold">53%</span> — não seguidores</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--oliva)"></div>
+          <span><span class="legend-bold">47%</span> — seguidores atuais</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="disc-content">
+      <div class="disc-highlight">
+        <div class="disc-highlight-num">53%</div>
+        <div class="disc-highlight-label">das visualizações vieram de não seguidores</div>
+        <div class="disc-highlight-text">Isso significa que mais da metade do alcance do perfil está sendo gerado por pessoas que ainda não seguem a conta — um sinal claro de que a marca está ganhando tração orgânica e atraindo novos públicos.</div>
+      </div>
+      <p style="font-size:0.9rem; color:var(--grafite); line-height:1.65; margin-bottom:20px; opacity:0.8;">O conteúdo está funcionando como <strong>porta de entrada</strong> para novos seguidores em potencial. Este é o estágio de <em>topo de funil</em> funcionando com excelência.</p>
+      <div class="funnel-tags">
+        <span class="funnel-tag">Topo de funil</span>
+        <span class="funnel-tag">Awareness</span>
+        <span class="funnel-tag">Descoberta orgânica</span>
+        <span class="funnel-tag">Expansão de audiência</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAJAMENTO -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">03 · Engajamento do Público</div>
+    <h2 class="section-title">O público está <em>reagindo</em></h2>
+    <p class="section-sub">Os dados de engajamento mostram um público ativo — e um terreno fértil para aprofundar a interação com estratégias direcionadas.</p>
+  </div>
+
+  <div class="engagement-grid">
+    <div class="eng-bars">
+      <div class="eng-bar-item">
+        <div class="eng-bar-header">
+          <span class="eng-bar-label">Total de Engajamentos</span>
+          <span class="eng-bar-value">336</span>
+        </div>
+        <div class="eng-bar-track">
+          <div class="eng-bar-fill" style="width:100%; background:var(--navy);"></div>
+        </div>
+      </div>
+      <div class="eng-bar-item">
+        <div class="eng-bar-header">
+          <span class="eng-bar-label">Reações (curtidas e similares)</span>
+          <span class="eng-bar-value">329</span>
+        </div>
+        <div class="eng-bar-track">
+          <div class="eng-bar-fill" style="width:97.9%; background:var(--terracota);"></div>
+        </div>
+      </div>
+      <div class="eng-bar-item">
+        <div class="eng-bar-header">
+          <span class="eng-bar-label">Comentários</span>
+          <span class="eng-bar-value">4</span>
+        </div>
+        <div class="eng-bar-track">
+          <div class="eng-bar-fill" style="width:1.2%; background:var(--oliva);"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eng-insight-card">
+      <div class="eng-insight-title">Conteúdo sendo consumido — com potencial de evolução na interação ativa</div>
+      <div class="eng-insight-body">As reações estão fortes, o que confirma que o conteúdo ressoa com o público. O próximo passo estratégico é converter esse consumo passivo em ações mais concretas — comentários, salvamentos e compartilhamentos.</div>
+      <div class="eng-insight-pill">Oportunidade de profundidade</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPORTAMENTO / STORIES -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">04 · Comportamento do Público</div>
+    <h2 class="section-title">Onde sua audiência <em>vive no perfil</em></h2>
+    <p class="section-sub">Entender onde o público está mais presente orienta onde investir energia criativa nas próximas semanas.</p>
+  </div>
+
+  <div class="behavior-grid">
+    <div class="stories-card">
+      <div class="stories-perc">80,2%</div>
+      <div class="stories-label">das visualizações · Stories</div>
+      <div class="stories-title">A audiência está conectada e presente</div>
+      <div class="stories-body">Mais de 80% das visualizações vêm dos Stories — o que demonstra que a audiência atual acompanha a marca de perto, de forma frequente e diária. Esse é o canal de maior intimidade e retenção do perfil.</div>
+    </div>
+    <div class="behavior-aside">
+      <div class="aside-card">
+        <div class="aside-card-title">🔗 Conexão com a audiência</div>
+        <div class="aside-card-body">O comportamento nos Stories indica uma audiência fiel que consome conteúdo com regularidade — um ativo valioso para campanhas de relacionamento e lançamentos.</div>
+      </div>
+      <div class="aside-card oliva-border">
+        <div class="aside-card-title" style="color:var(--oliva)">📈 Conteúdo próximo = retenção</div>
+        <div class="aside-card-body">Stories frequentes, autênticos e com personalidade são o que mantém o público ativo. A consistência nesse formato sustenta o crescimento orgânico de longo prazo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGUIDORES -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-eyebrow">05 · Crescimento de Seguidores</div>
+    <h2 class="section-title">Saldo positivo com <em>potencial de aceleração</em></h2>
+    <p class="section-sub">O crescimento líquido reflete uma base sólida sendo construída. Com otimizações pontuais, a conversão de visitantes em seguidores pode crescer de forma expressiva.</p>
+  </div>
+
+  <div class="followers-layout">
+    <div class="follower-card gained">
+      <div class="fol-icon">➕</div>
+      <div class="fol-num">+48</div>
+      <div class="fol-label">Novos seguidores</div>
+      <div class="fol-body">Novos públicos convertidos em audiência — resultado direto do crescimento de alcance no período.</div>
+    </div>
+    <div class="follower-card lost">
+      <div class="fol-icon">➖</div>
+      <div class="fol-num">-20</div>
+      <div class="fol-label">Saídas</div>
+      <div class="fol-body">Um número natural em qualquer perfil em crescimento — representa a curadoria orgânica da audiência.</div>
+    </div>
+    <div class="follower-card net">
+      <div class="fol-icon">📈</div>
+      <div class="fol-num">+28</div>
+      <div class="fol-label">Crescimento líquido</div>
+      <div class="fol-body">Saldo positivo no período — base crescendo com oportunidade real de otimizar a taxa de conversão de visitantes em seguidores.</div>
+    </div>
+  </div>
+</section>
+
+<!-- OPORTUNIDADES -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">06 · Oportunidades Estratégicas</div>
+    <h2 class="section-title">Caminhos claros para <em>o próximo nível</em></h2>
+    <p class="section-sub">Com a base de alcance construída, os próximos movimentos são sobre aprofundar o engajamento e acelerar a conversão de visitantes em seguidores.</p>
+  </div>
+
+  <div class="opp-grid">
+    <div class="opp-card">
+      <div class="opp-num">01</div>
+      <div class="opp-content">
+        <div class="opp-title">Conteúdos salváveis com alto valor percebido</div>
+        <div class="opp-desc">Checklists, guias práticos e dicas que o público queira guardar para consultar depois — aumentam o alcance orgânico e o tempo de vida do post.</div>
+      </div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-num">02</div>
+      <div class="opp-content">
+        <div class="opp-title">CTAs mais estratégicos em cada publicação</div>
+        <div class="opp-desc">Pequenos convites ao final dos conteúdos para comentar, compartilhar ou salvar. A instrução certa no momento certo transforma consumo passivo em interação real.</div>
+      </div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-num">03</div>
+      <div class="opp-content">
+        <div class="opp-title">Explorar Reels para ampliar o alcance</div>
+        <div class="opp-desc">O formato de maior distribuição orgânica do Instagram. Mais Reels bem posicionados podem multiplicar o número de contas alcançadas.</div>
+      </div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-num">04</div>
+      <div class="opp-content">
+        <div class="opp-title">Otimizar a conversão de visitantes em seguidores</div>
+        <div class="opp-desc">Com o alcance crescendo, o foco agora é garantir que quem chega ao perfil encontre motivo para ficar — bio clara, feed coeso e primeiros posts que gerem desejo de acompanhar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="nextsteps-section">
+  <div class="section-header">
+    <div class="section-eyebrow">07 · Próximos Passos</div>
+    <h2 class="section-title">A estratégia para o próximo período</h2>
+    <p class="section-sub">Com a visibilidade em alta, o próximo ciclo é sobre conversão, aprofundamento e crescimento sustentável da audiência.</p>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Refinar a estratégia de conteúdo</div>
+      <div class="step-body">Ajustar a linha editorial com base nos dados de performance — priorizando o que gera mais alcance e engajamento qualificado.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Foco em crescimento + conversão</div>
+      <div class="step-body">Manter o volume de alcance com ações que convertam visitantes em seguidores e seguidores em clientes.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Testes com novos formatos</div>
+      <div class="step-body">Experimentar Reels com diferentes abordagens para identificar o formato que gera mais descoberta e engajamento para o perfil.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Labcomex · Consultoria e Treinamentos</div>
+  <div class="footer-note">Relatório referente aos últimos 30 dias · Instagram @monnikegarcia</div>
+</footer>
+
+</body>
+</html>
